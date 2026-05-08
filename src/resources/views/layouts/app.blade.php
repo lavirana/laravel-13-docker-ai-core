@@ -32,5 +32,34 @@
                 {{ $slot }}
             </main>
         </div>
+        <script>
+      async function getAIIntro() {
+    const title = document.getElementById('blog_title').value;
+    const output = document.getElementById('ai_output');
+    output.innerText = "AI is thinking...";
+
+    try {
+        const response = await fetch('/generate-ai-intro', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json', // Ye line zaroori hai
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ title: title })
+        });
+
+        if (!response.ok) {
+            throw new Error('Server returned ' + response.status);
+        }
+
+        const data = await response.json();
+        output.innerText = data.intro;
+    } catch (error) {
+        output.innerText = "Error: " + error.message;
+        console.error(error);
+    }
+}
+            </script>
     </body>
 </html>

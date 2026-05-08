@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AIContentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,4 +18,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/generate-ai-intro', [AIContentController::class, 'generateIntro']);
 require __DIR__.'/auth.php';
