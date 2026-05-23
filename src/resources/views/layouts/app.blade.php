@@ -61,5 +61,34 @@
     }
 }
             </script>
+
+
+
+
+<script>
+
+    const form = document.getElementById('resumeForm');
+    const button = document.getElementById('analyzeBtn');
+    
+    const buttonText = document.getElementById('buttonText');
+    const buttonArrow = document.getElementById('buttonArrow');
+    
+    const loadingIcon = document.getElementById('loadingIcon');
+    
+    form.addEventListener('submit', function () {
+    
+        button.disabled = true;
+    
+        buttonText.textContent = 'Analyzing resume with AI...';
+    
+        buttonArrow.classList.add('hidden');
+    
+        loadingIcon.classList.remove('hidden');
+    
+    });
+    
+    </script>
+    
+    
     </body>
 </html>
