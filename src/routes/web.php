@@ -2,6 +2,7 @@
 
 use App\Ai\Agents\ResumeAnalyzer;
 use App\Http\Controllers\AIContentController;
+use App\Http\Controllers\MediaDemoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ResumeAnalyzerController;
 use App\Http\Controllers\UserController;
@@ -30,6 +31,11 @@ Route::get('/add-user', [UserController::class, 'add'])->name('users.add');
 
 Route::get('/resume', [ResumeAnalyzerController::class, 'index'])->name('resume.index');
 Route::post('/resume-analyzer', [ResumeAnalyzerController::class, 'analyze'])->name('resume-analyzer.analyze');
+
+Route::get('/chat', [\App\Http\Controllers\ChatController::class, 'index']);
+Route::get('/chat/stream', [\App\Http\Controllers\ChatController::class, 'stream'])->name('chat.stream');
+
+Route::get('/ai-media-demo', [MediaDemoController::class, 'index'])->name('ai.media.demo');
 
 
 Route::post('/generate-ai-intro', [AIContentController::class, 'generateIntro']);
