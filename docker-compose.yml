@@ -102,7 +102,20 @@ services:
       - redis_data:/data
     networks:
       - laravel_network
-
+# -----------------------------------------------
+  # Ollama — Local LLM Server for AI Utilities
+  # -----------------------------------------------
+  ollama:
+    image: ollama/ollama:latest
+    container_name: laravel_ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      # Isse downloaded AI models aapke Mac par safe rahenge
+      - ollama_data:/root/.ollama
+    networks:
+      - laravel_network
 # -----------------------------------------------
 # Named Volumes — persistent data storage
 # -----------------------------------------------
@@ -110,6 +123,8 @@ volumes:
   mysql_data:
     driver: local
   redis_data:
+    driver: local
+  ollama_data:        
     driver: local
 
 # -----------------------------------------------
