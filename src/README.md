@@ -19,7 +19,7 @@ This is a cutting-edge development environment for building AI-powered web appli
 - `phpmyadmin`: GUI for Database (Port 8080)
 
 ## Quick Start
-1. Clone the repo: `git clone [your-repo-link]`
+1. Clone the repo: `git clone https://github.com/lavirana/laravel-13-docker-ai-core.git`
 2. Start Docker: `docker compose up -d`
 3. Install Dependencies: `docker compose exec php composer install`
 4. Run Migrations: `docker compose exec php php artisan migrate`
